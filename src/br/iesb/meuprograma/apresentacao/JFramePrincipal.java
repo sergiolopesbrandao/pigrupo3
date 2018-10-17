@@ -80,6 +80,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
         jButton1.setText("Entrar");
         jButton1.setBorder(null);
         jButton1.setBorderPainted(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         login.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/blue_user_client_person_12581.png"))); // NOI18N
 
@@ -142,6 +147,11 @@ public class JFramePrincipal extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        JFrameInicio frame = new JFrameInicio ();
+        frame.setVisible(true);        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

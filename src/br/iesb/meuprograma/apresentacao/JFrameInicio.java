@@ -42,15 +42,6 @@ public class JFrameInicio extends javax.swing.JFrame {
         jButton7 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
-        jMenu1 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
-        jMenuItem2 = new javax.swing.JMenuItem();
-        jMenuItem3 = new javax.swing.JMenuItem();
-        jMenuItem4 = new javax.swing.JMenuItem();
-        jMenuItem5 = new javax.swing.JMenuItem();
-        jMenuItem6 = new javax.swing.JMenuItem();
-        jMenuItem7 = new javax.swing.JMenuItem();
-        jMenuItem8 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem9 = new javax.swing.JMenuItem();
         jMenuItem10 = new javax.swing.JMenuItem();
@@ -72,7 +63,6 @@ public class JFrameInicio extends javax.swing.JFrame {
         jMenu4 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(0, 0));
         setMinimumSize(null);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -139,6 +129,11 @@ public class JFrameInicio extends javax.swing.JFrame {
         jButton4.setText("Professor");
         jButton4.setMaximumSize(new java.awt.Dimension(133, 73));
         jButton4.setMinimumSize(new java.awt.Dimension(133, 73));
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         jButton3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/blue_portfolio_12534.png"))); // NOI18N
@@ -156,14 +151,29 @@ public class JFrameInicio extends javax.swing.JFrame {
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bluecalendar_azul_12604.png"))); // NOI18N
         jButton5.setText("Cronograma de Atividades");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         jButton6.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/blue_book_mark_12569.png"))); // NOI18N
         jButton6.setText("Bibliografia");
+        jButton6.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton6ActionPerformed(evt);
+            }
+        });
 
         jButton7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/icons/bluepaper_azu_12590.png"))); // NOI18N
         jButton7.setText("Ata de reunião");
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -234,34 +244,6 @@ public class JFrameInicio extends javax.swing.JFrame {
                 .addContainerGap(90, Short.MAX_VALUE))
         );
 
-        jMenu1.setText("Cadastrar");
-
-        jMenuItem1.setText("Curso");
-        jMenu1.add(jMenuItem1);
-
-        jMenuItem2.setText("PPC");
-        jMenu1.add(jMenuItem2);
-
-        jMenuItem3.setText("Plano de Ensino");
-        jMenu1.add(jMenuItem3);
-
-        jMenuItem4.setText("Professor");
-        jMenu1.add(jMenuItem4);
-
-        jMenuItem5.setText("Disciplina");
-        jMenu1.add(jMenuItem5);
-
-        jMenuItem6.setText("Bibliografia");
-        jMenu1.add(jMenuItem6);
-
-        jMenuItem7.setText("Cronograma de Atividades");
-        jMenu1.add(jMenuItem7);
-
-        jMenuItem8.setText("Ata de Reunião");
-        jMenu1.add(jMenuItem8);
-
-        jMenuBar1.add(jMenu1);
-
         jMenu2.setText("Consultar");
 
         jMenuItem9.setText("Curso");
@@ -286,6 +268,11 @@ public class JFrameInicio extends javax.swing.JFrame {
         jMenu2.add(jMenuItem15);
 
         jMenuItem16.setText("Ata de Reunião");
+        jMenuItem16.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem16ActionPerformed(evt);
+            }
+        });
         jMenu2.add(jMenuItem16);
 
         jMenuBar1.add(jMenu2);
@@ -343,8 +330,36 @@ public class JFrameInicio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+       JDialogPlan frame = new JDialogPlan (new javax.swing.JFrame(), true);
+        frame.setVisible(true);
+// TODO add your handling code here:
     }//GEN-LAST:event_jButton2ActionPerformed
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        JDialogAtas frame = new JDialogAtas(new javax.swing.JFrame(), true);
+        frame.setVisible(true);       
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jMenuItem16ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem16ActionPerformed
+        JDialogConsultaAta frame = new JDialogConsultaAta(new javax.swing.JFrame(), true);
+        frame.setVisible(true);
+    }//GEN-LAST:event_jMenuItem16ActionPerformed
+
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+        JDialogProfessor frame = new JDialogProfessor (new javax.swing.JFrame(), true);
+        frame.setVisible(true);
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+        JDialogBibliografia frame = new JDialogBibliografia (new javax.swing.JFrame(), true);
+        frame.setVisible(true);
+    }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+        JDialogCadastroAtividades frame = new JDialogCadastroAtividades (new javax.swing.JFrame(), true);
+        frame.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -393,12 +408,10 @@ public class JFrameInicio extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem10;
     private javax.swing.JMenuItem jMenuItem11;
     private javax.swing.JMenuItem jMenuItem12;
@@ -409,18 +422,11 @@ public class JFrameInicio extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem17;
     private javax.swing.JMenuItem jMenuItem18;
     private javax.swing.JMenuItem jMenuItem19;
-    private javax.swing.JMenuItem jMenuItem2;
     private javax.swing.JMenuItem jMenuItem20;
     private javax.swing.JMenuItem jMenuItem21;
     private javax.swing.JMenuItem jMenuItem22;
     private javax.swing.JMenuItem jMenuItem23;
     private javax.swing.JMenuItem jMenuItem24;
-    private javax.swing.JMenuItem jMenuItem3;
-    private javax.swing.JMenuItem jMenuItem4;
-    private javax.swing.JMenuItem jMenuItem5;
-    private javax.swing.JMenuItem jMenuItem6;
-    private javax.swing.JMenuItem jMenuItem7;
-    private javax.swing.JMenuItem jMenuItem8;
     private javax.swing.JMenuItem jMenuItem9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
