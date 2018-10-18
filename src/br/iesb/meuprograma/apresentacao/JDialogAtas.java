@@ -5,6 +5,12 @@
  */
 package br.iesb.meuprograma.apresentacao;
 
+import br.iesb.meuprograma.entidades.Ata;
+import br.iesb.meuprograma.negocio.AtaBO;
+import br.iesb.meuprograma.negocio.NegocioException;
+import javax.swing.JOptionPane;
+import java.util.Date;
+
 /**
  *
  * @author Casa
@@ -31,7 +37,7 @@ public class JDialogAtas extends javax.swing.JDialog {
         jPanel3 = new javax.swing.JPanel();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        jFormattedTextField1 = new javax.swing.JFormattedTextField();
+        jTData = new javax.swing.JFormattedTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jTLocal = new javax.swing.JTextField();
@@ -42,7 +48,7 @@ public class JDialogAtas extends javax.swing.JDialog {
         jList1 = new javax.swing.JList<>();
         jButton2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        jTextArea1 = new javax.swing.JTextArea();
+        jTDelib = new javax.swing.JTextArea();
         jLabel6 = new javax.swing.JLabel();
         jButton3 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
@@ -79,7 +85,7 @@ public class JDialogAtas extends javax.swing.JDialog {
                     .addContainerGap(34, Short.MAX_VALUE)))
         );
 
-        jFormattedTextField1.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter()));
+        jTData.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.DateFormatter(java.text.DateFormat.getDateInstance(java.text.DateFormat.SHORT))));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel3.setText("Data da Reunião ");
@@ -101,16 +107,26 @@ public class JDialogAtas extends javax.swing.JDialog {
 
         jButton2.setText("Remover");
 
-        jTextArea1.setColumns(20);
-        jTextArea1.setRows(5);
-        jScrollPane2.setViewportView(jTextArea1);
+        jTDelib.setColumns(20);
+        jTDelib.setRows(5);
+        jScrollPane2.setViewportView(jTDelib);
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         jLabel6.setText("Deliberações");
 
         jButton3.setText("Cancelar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
 
         jButton4.setText("Salvar");
+        jButton4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton4ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -123,7 +139,7 @@ public class JDialogAtas extends javax.swing.JDialog {
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jFormattedTextField1)
+                            .addComponent(jTData)
                             .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(18, 18, 18)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -161,7 +177,7 @@ public class JDialogAtas extends javax.swing.JDialog {
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jFormattedTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTData, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jTLocal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(11, 11, 11)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -203,7 +219,31 @@ public class JDialogAtas extends javax.swing.JDialog {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+      Ata ata = new Ata();
+      ata.setData((Date) jTData.getValue());
+      ata.setLocal(jTLocal.getText());
+      ata.setParticipantes(jTParticipantes.getText());
+      ata.setDeliberacoes(jTDelib.getText());
+      
+      AtaBO bo = new AtaBO();
+      try {
+          bo.inserir(ata);
+          JOptionPane.showMessageDialog(rootPane, "Salva com sucesso!", "Informação", JOptionPane.INFORMATION_MESSAGE);
+          dispose();
+      } catch (NegocioException e) {
+             JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+      
+      
+    }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+      dispose();
+    }//GEN-LAST:event_jButton3ActionPerformed
+
     /**
+     * 
      * @param args the command line arguments
      */
     public static void main(String args[]) {
@@ -250,7 +290,6 @@ public class JDialogAtas extends javax.swing.JDialog {
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JFormattedTextField jFormattedTextField1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -261,8 +300,9 @@ public class JDialogAtas extends javax.swing.JDialog {
     private javax.swing.JPanel jPanel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JFormattedTextField jTData;
+    private javax.swing.JTextArea jTDelib;
     private javax.swing.JTextField jTLocal;
     private javax.swing.JTextField jTParticipantes;
-    private javax.swing.JTextArea jTextArea1;
     // End of variables declaration//GEN-END:variables
 }

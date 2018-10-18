@@ -5,6 +5,11 @@
  */
 package br.iesb.meuprograma.apresentacao;
 
+import br.iesb.meuprograma.entidades.Bibliografia;
+import br.iesb.meuprograma.negocio.BibliografiaBO;
+import br.iesb.meuprograma.negocio.NegocioException;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author Casa
@@ -44,9 +49,9 @@ public class JDialogBibliografia extends javax.swing.JDialog {
         jLabel7 = new javax.swing.JLabel();
         jTIsbn = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        JtAno = new javax.swing.JTextField();
+        jTAno = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
-        jTIsbn1 = new javax.swing.JTextField();
+        jTEditora = new javax.swing.JTextField();
         jBCadastrarBi = new javax.swing.JButton();
         jBCancelarBi = new javax.swing.JButton();
 
@@ -106,6 +111,11 @@ public class JDialogBibliografia extends javax.swing.JDialog {
         jLabel9.setText("Editora:");
 
         jBCadastrarBi.setText("Cadastrar");
+        jBCadastrarBi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBCadastrarBiActionPerformed(evt);
+            }
+        });
 
         jBCancelarBi.setText("Cancelar");
 
@@ -143,7 +153,7 @@ public class JDialogBibliografia extends javax.swing.JDialog {
                                                 .addGap(78, 78, 78)
                                                 .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 52, javax.swing.GroupLayout.PREFERRED_SIZE)
                                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                                .addComponent(JtAno, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                                .addComponent(jTAno, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE))
                                             .addComponent(jTAutor, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addComponent(jTTitulo, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE)
                                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -154,7 +164,7 @@ public class JDialogBibliografia extends javax.swing.JDialog {
                                                 .addComponent(jLabel3)
                                                 .addGap(18, 18, 18)
                                                 .addComponent(jCBDisciplina, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                            .addComponent(jTIsbn1, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE))))))
+                                            .addComponent(jTEditora, javax.swing.GroupLayout.PREFERRED_SIZE, 459, javax.swing.GroupLayout.PREFERRED_SIZE))))))
                         .addGap(0, 116, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -185,17 +195,17 @@ public class JDialogBibliografia extends javax.swing.JDialog {
                 .addGap(9, 9, 9)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(JtAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jTAno, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel8))
                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                         .addComponent(jTIsbn, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addComponent(jLabel7)))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jTIsbn1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jTEditora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jBCadastrarBi)
                     .addComponent(jBCancelarBi))
                 .addGap(0, 44, Short.MAX_VALUE))
@@ -220,6 +230,27 @@ public class JDialogBibliografia extends javax.swing.JDialog {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jBCadastrarBiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBCadastrarBiActionPerformed
+      Bibliografia bibliografia = new Bibliografia();
+      bibliografia.setTitulo(jTTitulo.getText());
+      bibliografia.setAutor(jTAutor.getText());
+      bibliografia.setIsbn(jTIsbn.getText());
+      bibliografia.setAno(jTAno.getText());
+      bibliografia.setEditora(jTEditora.getText());
+      
+      BibliografiaBO bo = new BibliografiaBO();
+      try {
+          bo.inserir(bibliografia);
+          JOptionPane.showMessageDialog(rootPane, "Cadastrado com sucesso!", "Informação", JOptionPane.INFORMATION_MESSAGE);
+          dispose();
+      } catch (NegocioException e) {
+             JOptionPane.showMessageDialog(rootPane, e.getMessage(), "Aviso", JOptionPane.WARNING_MESSAGE);
+        }
+      
+      
+                            
+    }//GEN-LAST:event_jBCadastrarBiActionPerformed
 
     /**
      * @param args the command line arguments
@@ -264,7 +295,6 @@ public class JDialogBibliografia extends javax.swing.JDialog {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTextField JtAno;
     private javax.swing.JButton jBCadastrarBi;
     private javax.swing.JButton jBCancelarBi;
     private javax.swing.JButton jButton1;
@@ -281,9 +311,10 @@ public class JDialogBibliografia extends javax.swing.JDialog {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JTextField jTAno;
     private javax.swing.JTextField jTAutor;
+    private javax.swing.JTextField jTEditora;
     private javax.swing.JTextField jTIsbn;
-    private javax.swing.JTextField jTIsbn1;
     private javax.swing.JTextField jTTitulo;
     // End of variables declaration//GEN-END:variables
 }

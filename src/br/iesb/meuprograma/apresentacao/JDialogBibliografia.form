@@ -77,7 +77,7 @@
                                                   <EmptySpace min="-2" pref="78" max="-2" attributes="0"/>
                                                   <Component id="jLabel8" min="-2" pref="52" max="-2" attributes="0"/>
                                                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                                                  <Component id="JtAno" min="-2" pref="72" max="-2" attributes="0"/>
+                                                  <Component id="jTAno" min="-2" pref="72" max="-2" attributes="0"/>
                                               </Group>
                                               <Component id="jTAutor" min="-2" pref="459" max="-2" attributes="0"/>
                                               <Component id="jTTitulo" min="-2" pref="459" max="-2" attributes="0"/>
@@ -90,7 +90,7 @@
                                                   <EmptySpace type="separate" max="-2" attributes="0"/>
                                                   <Component id="jCBDisciplina" min="-2" pref="103" max="-2" attributes="0"/>
                                               </Group>
-                                              <Component id="jTIsbn1" alignment="0" min="-2" pref="459" max="-2" attributes="0"/>
+                                              <Component id="jTEditora" alignment="0" min="-2" pref="459" max="-2" attributes="0"/>
                                           </Group>
                                       </Group>
                                   </Group>
@@ -135,7 +135,7 @@
                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="103" groupAlignment="3" attributes="0">
-                          <Component id="JtAno" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="jTAno" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -145,13 +145,13 @@
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jTIsbn1" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jTEditora" alignment="3" min="-2" max="-2" attributes="0"/>
                       <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
+                  <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="jBCadastrarBi" alignment="0" min="-2" max="-2" attributes="0"/>
-                      <Component id="jBCancelarBi" alignment="3" min="-2" max="-2" attributes="0"/>
+                      <Component id="jBCancelarBi" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="0" pref="44" max="32767" attributes="0"/>
               </Group>
@@ -297,19 +297,22 @@
             <Property name="text" type="java.lang.String" value="Ano:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="JtAno">
+        <Component class="javax.swing.JTextField" name="jTAno">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel9">
           <Properties>
             <Property name="text" type="java.lang.String" value="Editora:"/>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="jTIsbn1">
+        <Component class="javax.swing.JTextField" name="jTEditora">
         </Component>
         <Component class="javax.swing.JButton" name="jBCadastrarBi">
           <Properties>
             <Property name="text" type="java.lang.String" value="Cadastrar"/>
           </Properties>
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jBCadastrarBiActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jBCancelarBi">
           <Properties>
