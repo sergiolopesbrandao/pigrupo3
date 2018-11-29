@@ -1,0 +1,17 @@
+{
+  "name": "pigrupo3",
+  "scripts": {
+  },
+  "env": {
+  },
+  "formation": {
+  },
+  "addons": [
+
+  ],
+  "buildpacks": [
+    {
+      "url": "https://github.com/sergiolopesbrandao/pigrupo3/blob/master/src/br/iesb/meuprograma/Principal.java"
+    }
+  ]
+}
